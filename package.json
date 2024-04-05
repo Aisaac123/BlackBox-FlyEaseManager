@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test:jest": "jest",
-    "push:Git": "git add . && git commit -m 'Configuracion del entorno de jest' && git push"
+    "push:Git": "git add . && git commit -m 'Configuracion del entorno de jest' && git push",
+    "install:jest": "install && install --save-dev ts-jest && install --save-dev ts-jest && install --save-dev @types/node && install && install axios --save-dev && npm install --save-dev ts-node"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
