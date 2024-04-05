@@ -32,7 +32,7 @@ export const Peticion = async (endpoint:string, tipo:string, data:object | null 
     return new Promise((_, reject) => {
         const errorResponse: AxiosErrorResponse = {
             data: { mensaje: "Error en el tipo de método.", success: false },
-            status: 0,
+            status: 1,
             statusText: ""
         };
         reject(errorResponse);
