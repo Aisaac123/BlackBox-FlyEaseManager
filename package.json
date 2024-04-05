@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "test": "jest",
     "push:Git": "git add . && git commit -m \"Corrección comando de instalación automática\" && git push",
-    "install:jest": "npm install && npm install --save-dev ts-jest && npm install --save-dev ts-jest && npm install --save-dev @types/node && npm install && npm install axios --save-dev && npm install --save-dev ts-node"
+    "install:jest": "npm install && npm install --save-dev ts-jest && npm install --save-dev ts-jest && npm install --save-dev @types/node && npm install && npm install axios --save-dev && npm install --save-dev ts-node && npm install jest-html-reporter --save-dev "
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
@@ -19,5 +19,8 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
+  },
+  "dependencies": {
+    "jest-html-reporter": "^3.10.2"
   }
 }

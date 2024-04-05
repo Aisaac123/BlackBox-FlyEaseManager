@@ -1,8 +1,5 @@
 import axios from "axios";
 import {AuthResponse} from '../interfaces/AuthResponse.ts'
-
-
-
 /**
  Metodo que recibe el usuario y la contraseña para devolver el token de acceso. Swagger: {@link https://www.flyeasemanager.site/FlyEaseWebApiSwaggerUI/index.html}
  */
