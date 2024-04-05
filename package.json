@@ -15,12 +15,10 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.4",
     "axios": "^1.6.8",
+    "jest-html-reporter": "^3.10.2",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
-  },
-  "dependencies": {
-    "jest-html-reporter": "^3.10.2"
   }
 }

@@ -1,5 +1,5 @@
-export interface ModelResponse<T extends Object> {
+export interface ModelResponse {
     mensaje:  string;
     success:  boolean;
-    response: T;
+    response?: object;
 }
