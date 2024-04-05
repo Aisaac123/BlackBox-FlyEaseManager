@@ -3,7 +3,7 @@ import {AuthResponse} from '../interfaces/AuthResponse.ts'
 /**
  Metodo que recibe el usuario y la contraseña para devolver el token de acceso. Swagger: {@link https://www.flyeasemanager.site/FlyEaseWebApiSwaggerUI/index.html}
  */
-export const Autorize = async (usuario: string, clave: string): Promise<string> => {
+export const Authorize = async (usuario: string, clave: string): Promise<string> => {
     const data = {
         usuario,
         clave,
