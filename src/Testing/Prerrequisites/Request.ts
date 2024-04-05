@@ -3,7 +3,7 @@ import axios, {AxiosResponse} from "axios";
 import {ModelResponse} from "../interfaces/ModelsResponse.ts";
 import {AxiosErrorResponse} from "../interfaces/AxiosErrorResponse.ts";
 
-export const Peticion = async (endpoint:string, tipo:string, data:object | null = null ):Promise<AxiosResponse<ModelResponse>> => {
+export const Request = async (endpoint:string, tipo:string, data:object | null = null ):Promise<AxiosResponse<ModelResponse>> => {
     const token = await Autorize('Aisaac', 'isaacdavid1234')
 
 
