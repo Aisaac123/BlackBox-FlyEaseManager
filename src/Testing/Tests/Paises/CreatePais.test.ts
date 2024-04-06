@@ -1,5 +1,5 @@
-import { Request } from "../Prerrequisites/Request.ts";
-import { RandomString } from "../Prerrequisites/RamdomString.ts";
+import { Request } from "../../Prerrequisites/Request.ts";
+import { RandomString } from "../../Prerrequisites/RamdomString.ts";
 describe("Test Crear Pais", () => {
   describe("Casos de prueba: Clases de equivalencia validas", () => {
     // Deberia de ser ingresado correctamente

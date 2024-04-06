@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "jest",
+    "test": "jest --watch",
     "push:Git": "git add . && git commit -m \"Corrección comando de instalación automática\" && git push",
     "install:jest": "npm install && npm install --save-dev ts-jest && npm install --save-dev ts-jest && npm install --save-dev @types/node && npm install && npm install axios --save-dev && npm install --save-dev ts-node && npm install jest-html-reporter --save-dev "
   },
