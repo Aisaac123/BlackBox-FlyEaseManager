@@ -26,7 +26,7 @@ describe("Test Crear Pais", () => {
 
   describe("Casos de prueba: Clases de equivalencia invalidas", () => {
 
-      test("CPU_02_CrearPais", async () => {
+      test("CPU_02_CrearPais_VoidName", async () => {
       const data = {
         nombre: "",
       };

@@ -1,12 +1,9 @@
 import { Request } from "./Request.ts";
 import {ExistResponse} from "../interfaces/ExistResponse.ts";
 
-
-
 export class Exist {
-
     /**
-     Devuelve true si econtro un objeto el cual sus propiedades concuerden con su valor, false si el valor no coincide, ej:
+     Devuelve true si encontro un objeto el cual sus propiedades concuerden con su valor, false si el valor no coincide, ej:
      await Exist({nombre:Colombia}, 'Paises') busca si hay un objeto en el controlador de Paises donde el nombre === 'Colombia' devolvera true en este caso.
      En caso contrario donde no haya ningun objeto el cual su nombre === Colombia devolvera false, asi para cada propiedad del objeto
      Aplica para cualquier parametro de cualquier objeto.
@@ -59,8 +56,6 @@ export class Exist {
             throw new Error(error);
         }
     }
-
-
     /**
      Lo mismo que ExistProperties pero este elimina directamente si existe, pide el nombre del parametro del id del objeto para eliminar por id
      */
