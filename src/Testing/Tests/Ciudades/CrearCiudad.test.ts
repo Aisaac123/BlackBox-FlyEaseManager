@@ -54,7 +54,7 @@ describe("Test crear Ciudad", () => {
                 .catch(async (error) => {
                     if (error.isAxiosError) {
                         console.log(error.status);
-                        expect(error.status).toBe(200);
+                        expect(error.status).toBe(409);
                     } else {
                         throw error;
                     }

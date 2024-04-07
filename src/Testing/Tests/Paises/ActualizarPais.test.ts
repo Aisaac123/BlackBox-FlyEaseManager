@@ -1,7 +1,6 @@
-import {Request} from "../../Utils/Request.ts";
 import {Exist} from "../../Utils/Exist.ts";
 import {RandomString} from "../../Utils/RamdomString.ts";
-import {Pais} from "../../interfaces/AirportModel.ts";
+import {UpdateRequest} from "../../Utils/UpdateRequest.ts";
 
 describe("Test Actualizar Pais", () => {
     describe("Casos de prueba: Clases de equivalencia validas", () => {
@@ -13,11 +12,9 @@ describe("Test Actualizar Pais", () => {
             const newData = {
                 nombre: RandomString(10),
             }
-            const newCountry = (await Request("/Paises/Post", "post", data)).data.response as Pais
 
-            await Request(`/Paises/Put/${newCountry.idpais}`, "put", newData)
+            await UpdateRequest("Paises", "idpais", data, newData)
                 .then(async (response) => {
-                    await Exist.ifExistDelete('idpais', data, 'Paises');
                     expect(response.status).toBe(200);
                 })
                 .catch(async (error) => {
@@ -41,17 +38,14 @@ describe("Test Actualizar Pais", () => {
                 nombre: "",
             }
 
-            const newCountry = (await Request("/Paises/Post", "post", data)).data.response as Pais
-
-            await Request(`/Paises/Put/${newCountry.idpais}`, "put", newData)
+            await UpdateRequest("Paises", "idpais", data, newData)
                 .then(async (response) => {
-                    await Exist.ifExistDelete('idpais', data, 'Paises');
-                    expect(response.status).toBe(401 || 404 || 409 || 500);
+                    expect(response.status).toBe(  409 || 500);
                 })
                 .catch(async (error) => {
                     if (error.isAxiosError) {
                         console.log(error.status);
-                        expect(error.status).toBe(200);
+                        expect(error.status).toBe( 409 || 500);
                     } else {
                         throw error;
                     }
@@ -67,17 +61,14 @@ describe("Test Actualizar Pais", () => {
                 nombre: RandomString(61),
             }
 
-            const newCountry = (await Request("/Paises/Post", "post", data)).data.response as Pais
-
-            await Request(`/Paises/Put/${newCountry.idpais}`, "put", newData)
+            await UpdateRequest("Paises", "idpais", data, newData)
                 .then(async (response) => {
-                    await Exist.ifExistDelete('idpais', data, 'Paises');
-                    expect(response.status).toBe(401 || 404 || 409 || 500);
+                    expect(response.status).toBe(  409 || 500);
                 })
                 .catch(async (error) => {
                     if (error.isAxiosError) {
                         console.log(error.status);
-                        expect(error.status).toBe(200);
+                        expect(error.status).toBe( 409 || 500);
                     } else {
                         throw error;
                     }
@@ -93,17 +84,15 @@ describe("Test Actualizar Pais", () => {
                 nombre: null,
             }
 
-            const newCountry = (await Request("/Paises/Post", "post", data)).data.response as Pais
-
-            await Request(`/Paises/Put/${newCountry.idpais}`, "put", newData)
+            await UpdateRequest("Paises", "idpais", data, newData)
                 .then(async (response) => {
                     await Exist.ifExistDelete('idpais', data, 'Paises');
-                    expect(response.status).toBe( 409);
+                    expect(response.status).toBe(  409);
                 })
                 .catch(async (error) => {
                     if (error.isAxiosError) {
                         console.log(error.status);
-                        expect(error.status).toBe(200);
+                        expect(error.status).toBe( 409);
                     } else {
                         throw error;
                     }

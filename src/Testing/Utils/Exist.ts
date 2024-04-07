@@ -33,11 +33,24 @@ export class Exist {
                         }
                         throw new Error(`Las siguientes propiedades no coinciden: ${mismatchedProperties.join(', ')}`);
                     }
-
                     // @ts-ignore
                     if (item[key as keyof typeof item] !== data[key] || item[key as keyof typeof item].length !== data[key].length) {
-                        allPropertiesMatch = false;
-                        break;
+
+                        // @ts-ignore
+                        if (typeof data[key] === "object" && typeof item[key] === "object") {
+                            // @ts-ignore
+                            const allNestedPropertiesMatch = this.compareObjects(data[key], item[key]);
+                            if (!allNestedPropertiesMatch) {
+                                allPropertiesMatch = false;
+                                break;
+                            }
+                        } else {
+                            // @ts-ignore
+                            if (data[key] !== item[key]) {
+                                allPropertiesMatch = false;
+                                break;
+                            }
+                        }
                     }
 
                     dataProperties.delete(key);
@@ -56,6 +69,33 @@ export class Exist {
             throw new Error(error);
         }
     }
+
+    private static compareObjects(obj1: object, obj2: object): boolean {
+        const keys1 = Object.keys(obj1);
+        const keys2 = Object.keys(obj2);
+
+        if (keys1.length !== keys2.length) {
+            return false;
+        }
+
+        for (const key in obj1) {
+            //@ts-ignore
+            const value1 = obj1[key];
+            //@ts-ignore
+            const value2 = obj2[key];
+
+            if (typeof value1 === "object" && typeof value2 === "object") {
+                if (!this.compareObjects(value1, value2)) {
+                    return false;
+                }
+            } else if (value1 !== value2) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     /**
      Lo mismo que ExistProperties pero este elimina directamente si existe, pide el nombre del parametro del id del objeto para eliminar por id
      */
@@ -73,8 +113,5 @@ export class Exist {
         }
     }
 
-    public static async _delete(id:string | number,model:string):Promise<boolean> {
-        const successDelete = await Request(`${model}/Delete/${id}`, 'delete');
-        return successDelete.data.success;
-    }
+
 }
