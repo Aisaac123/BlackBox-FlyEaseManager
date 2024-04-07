@@ -28,7 +28,7 @@ export interface Pais {
 }
 
 export interface Coordenadas {
-    idcoordenada:  number;
+    idcoordenada?:  number;
     latitud:       number;
     longitud:      number;
     fecharegistro: Date;
