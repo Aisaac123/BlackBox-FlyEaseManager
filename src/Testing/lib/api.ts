@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Authorize } from "../Prerrequisites/Authorize";
+import { Authorize } from "../Utils/Authorize.ts";
 
 export const flyEaseApi = axios.create({
   baseURL: "https://flyeasemanager.site/FlyEaseApi/",

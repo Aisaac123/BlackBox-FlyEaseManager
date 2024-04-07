@@ -1,5 +1,5 @@
-import { Request } from "../../Prerrequisites/Request.ts";
-import { RandomString } from "../../Prerrequisites/RamdomString.ts";
+import { Request } from "../../Utils/Request.ts";
+import { RandomString } from "../../Utils/RamdomString.ts";
 import { Pais } from "../../interfaces/CountryModel.ts";
 describe("Test Eliminar Pais", () => {
     describe("Casos de prueba: Clases de equivalencia validas", () => {

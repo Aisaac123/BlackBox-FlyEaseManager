@@ -1,66 +1,86 @@
-import { Request } from "../../Prerrequisites/Request.ts";
-import { RandomString } from "../../Prerrequisites/RamdomString.ts";
+import { Request } from "../../Utils/Request.ts";
+import { RandomString } from "../../Utils/RamdomString.ts";
+import {Exist} from "../../Utils/Exist.ts";
 describe("Test Crear Pais", () => {
   describe("Casos de prueba: Clases de equivalencia validas", () => {
-    // Deberia de ser ingresado correctamente
-    test("CPU_01_CrearPais", async () => {
+
+      test("CPU_01_CrearPais", async () => {
       const data = {
-        nombre: RandomString(6),
+        nombre: RandomString(10),
       };
       await Request("/Paises/Post", "post", data)
-        .then((response) => {
-          expect(response.status).toBe(200);
-          console.log(response.status);
+        .then(async (response) => {
+            await Exist.ifExistDelete('idpais', data, 'Paises');
+            expect(response.status).toBe(200);
         })
-        .catch((error) => {
-          expect(error.status).toBe(200);
-          console.log(error.status);
+        .catch(async (error) => {
+            if(error.isAxiosError){
+                console.log(error.status);
+                expect(error.status).toBe(200);
+            }else{
+                throw error;
+            }
         });
     });
   });
 
   describe("Casos de prueba: Clases de equivalencia invalidas", () => {
-    // Deberia de fallar, nombre vacio
-    test("CPU_02_CrearPais", async () => {
+
+      test("CPU_02_CrearPais", async () => {
       const data = {
         nombre: "",
       };
+
       await Request("/Paises/Post", "post", data)
-        .then((response) => {
-          expect(response.status).toBe(409 || 500);
-          console.log(response);
-        })
+        .then(async (response) => {
+            await Exist.ifExistDelete('idpais', data, 'Paises');
+            expect(response.status).toBe(409 || 500);
+        }).catch((error) => {
+              if(error.isAxiosError){
+                  console.log(error.status);
+                  expect(error.status).toBe(409 || 500);
+              }else{
+                  throw error;
+              }
+          });
     });
 
-    // Deberia de fallar, nombre demasiado largo
-    test("CPU_03_CrearPais", async () => {
+      test("CPU_03_CrearPais", async () => {
       const data = {
-        nombre: RandomString(61),
+          idpais:233,
+          nombre: RandomString(61)
       };
       await Request("/Paises/Post", "post", data)
-        .then((response) => {
-          expect(response.status).toBe(409 || 500);
-          console.log(response.status);
+        .then(async (response) => {
+            await Exist.ifExistDelete('idpais', data, 'Paises');
+            expect(response.status).toBe(409 || 500);
         })
         .catch((error) => {
-          expect(error.status).toBe(409 || 500);
-          console.log(error.status);
+            if(error.isAxiosError){
+                console.log(error.status);
+                expect(error.status).toBe(409 || 500);
+            }else{
+                throw error;
+            }
         });
     });
 
-    // Deberia de fallar, nombre nulo
-    test("CPU_04_CrearPais", async () => {
+      test("CPU_04_CrearPais", async () => {
       const data = {
         nombre: null,
       };
       await Request("/Paises/Post", "post", data)
-        .then((response) => {
-          expect(response.status).toBe(409 || 500);
-          console.log(response.status);
+        .then(async (response) => {
+            await Exist.ifExistDelete('idpais', data, 'Paises');
+            expect(response.status).toBe(409 || 500);
         })
         .catch((error) => {
-          expect(error.status).toBe(409 || 500);
-          console.log(error.status);
+            if(error.isAxiosError){
+                console.log(error.status);
+                expect(error.status).toBe(409 || 500);
+            }else{
+                throw error;
+            }
         });
     });
   });
