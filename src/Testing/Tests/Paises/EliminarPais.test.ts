@@ -23,7 +23,6 @@ describe("Test Eliminar Pais", () => {
     });
 
     describe("Casos de prueba: Clases de equivalencia invalidas", () => {
-        // Deberia de fallar, ID 0
         test("CPU_02_ELiminarPais_IdZero", async () => {
             await Request(`/Paises/Delete/0`, "delete", null)
                 .then((response) => {
